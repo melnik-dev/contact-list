@@ -102,9 +102,9 @@ export default {
   },
   computed: {
     filterContacts() {
-      return this.contactList.filter(с => {
+      return this.contactList ? this.contactList.filter(с => {
             return с.name.toLowerCase().includes(this.searchValue.toLowerCase()) || с.surname.toLowerCase().includes(this.searchValue.toLowerCase())
-          }) || []
+          }) : []
     }
   },
   watch: {
