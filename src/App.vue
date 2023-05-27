@@ -45,19 +45,7 @@ export default {
   data() {
     return {
       isActiveAdd: true,
-      contactList: [{
-        id: 1,
-        name: 'Elon',
-        surname: 'Musk',
-        phone: '12345',
-        mail: 'Musk@mail.com'
-      }, {
-        id: 2,
-        name: 'Aleks',
-        surname: 'Mans',
-        phone: '12345',
-        mail: 'Musk@mail.com'
-      }],
+      contactList: [],
       searchValue: '',
       parse: []
     }
@@ -118,7 +106,10 @@ export default {
   },
   mounted() {
     let storage = localStorage.getItem('contactList')
-    this.contactList = storage ? JSON.parse(storage) : [];
+    if (storage) {
+      this.contactList = JSON.parse(storage)
+    }
+
   }
 }
 </script>
