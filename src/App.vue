@@ -102,9 +102,9 @@ export default {
   },
   computed: {
     filterContacts() {
-      return this.contactList ? this.contactList.filter(с => {
+      return this.contactList.filter(с => {
             return с.name.toLowerCase().includes(this.searchValue.toLowerCase()) || с.surname.toLowerCase().includes(this.searchValue.toLowerCase())
-          }) : []
+          })
     }
   },
   watch: {
@@ -116,7 +116,9 @@ export default {
     }
   },
   mounted() {
-    this.contactList = JSON.parse(localStorage.getItem('contactList'))
+    if(localStorage.getItem('contactList')) {
+      this.contactList = JSON.parse(localStorage.getItem('contactList'))
+    }
   }
 }
 </script>
