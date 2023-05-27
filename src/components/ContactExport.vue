@@ -1,5 +1,5 @@
 <template>
-  <a @click="onDownload" download="contacts.csv" class="btn btn-small" href='#'>Загрузить</a>
+  <a @click="onDownload" download="contacts.csv" class="btn btn-small btn-download" href='#'>Экспорт</a>
 </template>
 
 <script>
@@ -26,5 +26,9 @@ export default {
 </script>
 
 <style scoped>
-
+.btn-download {
+  margin-right: 10px;
+  text-decoration: none;
+  color: black;
+}
 </style>

@@ -131,6 +131,8 @@ export default {
 }
 
 #app {
+  display: flex;
+  flex-direction: column;
   width: 450px;
   height: 650px;
   margin: 50px auto;
@@ -176,6 +178,6 @@ export default {
   max-height: 400px;
 }
 .load__box {
-
+  margin-top: auto;
 }
 </style>

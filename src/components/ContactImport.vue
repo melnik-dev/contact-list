@@ -1,5 +1,8 @@
 <template>
-  <input class="btn btn-small" type="file" @change="onUpload">
+  <label>
+    <span class="btn btn-small">Импорт</span>
+    <input class="upload-input" type="file" @change="onUpload">
+  </label>
 </template>
 
 <script>
@@ -28,22 +31,33 @@ export default {
       return data;
     },
     onUpload(event) {
-      const file = event.currentTarget.files[0];
-      const reader = new FileReader();
+      const file = event.target.files[0]
+      const reader = new FileReader()
+      console.log(file)
+      if (file) {
+        reader.readAsText(file)
 
-      reader.readAsText(file)
-
-      reader.onload = () => {
-        this.parse = reader.result
-        if(reader.result) {
-          this.$emit('onUploadFile', this.parseCSV(reader.result))
+        reader.onload = () => {
+          this.parse = reader.result
+          if (reader.result) {
+            this.$emit('onUploadFile', this.parseCSV(reader.result))
+          }
         }
+        reader.onerror = () => {
+          console.log(reader.error)
+        }
+      } else {
+        console.log('файл не выбран')
       }
+
+
     }
   }
 }
 </script>
 
 <style scoped>
-
+.upload-input {
+  display: none;
+}
 </style>
