@@ -110,15 +110,14 @@ export default {
   watch: {
     contactList: {
       handler() {
-        window.localStorage.setItem('contactList', JSON.stringify(this.contactList))
+        localStorage.setItem('contactList', JSON.stringify(this.contactList))
       },
       deep: true
     }
   },
   mounted() {
-    if(localStorage.getItem('contactList')) {
-      this.contactList = JSON.parse(localStorage.getItem('contactList'))
-    }
+    let storage = localStorage.getItem('contactList')
+    this.contactList = storage ? JSON.parse(storage) : [];
   }
 }
 </script>
