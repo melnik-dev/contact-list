@@ -110,6 +110,7 @@ export default {
   watch: {
     contactList: {
       handler() {
+        localStorage.removeItem('contactList')
         localStorage.setItem('contactList', JSON.stringify(this.contactList))
       },
       deep: true
